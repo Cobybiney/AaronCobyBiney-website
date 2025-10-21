@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Power Systems | Baah Raphael Engineering</title>
+    <style>
+        /* Global Styles - Consistent with your other pages */
+        :root {
+            --primary: #002366;
+            --accent: #BA160C;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: white;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 1rem;
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--primary);
+        }
+        
+        a:hover {
+            color: var(--accent);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background: var(--accent);
+            color: white;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .logo span {
+            color: var(--accent);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            font-weight: 600;
+        }
+        
+        nav ul li a.active {
+            color: var(--accent);
+        }
+
+        /* Category Hero */
+        .category-hero {
+            background: linear-gradient(rgba(0, 35, 102, 0.8), rgba(0, 35, 102, 0.8)), url('https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+        }
+        
+        .category-hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            padding: 15px 0;
+            background: var(--light);
+        }
+        
+        .breadcrumb a {
+            color: var(--gray);
+        }
+        
+        .breadcrumb a:hover {
+            color: var(--primary);
+        }
+
+        /* Category Content */
+        .category-content {
+            padding: 60px 0;
+        }
+        
+        .category-description {
+            max-width: 800px;
+            margin: 0 auto 40px;
+            text-align: center;
+        }
+        
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .article-card {
+            border: 1px solid #eee;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .article-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .article-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .article-card:hover .article-img img {
+            transform: scale(1.05);
+        }
+        
+        .article-content {
+            padding: 25px;
+        }
+        
+        .article-meta {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        
+        .article-content h3 {
+            margin-bottom: 15px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col h3 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-col ul li a {
+            color: #adb5bd;
+        }
+        
+        .footer-col ul li a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #495057;
+            color: #adb5bd;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+            }
+            
+            nav ul li {
+                margin: 0 15px 0 0;
+            }
+            
+            .category-hero h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">Baah<span>Raphael</span></a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Category Hero -->
+    <section class="category-hero">
+        <div class="container">
+            <h1>Power Systems</h1>
+            <p>Comprehensive resources on power generation, transmission, and distribution</p>
+        </div>
+    </section>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb container">
+        <a href="index.html">Home</a> &raquo; <a href="blog.html">Blog</a> &raquo; Power Systems
+    </div>
+
+    <!-- Category Content -->
+    <section class="category-content">
+        <div class="container">
+            <div class="category-description">
+                <h2>Mastering Power Systems Engineering</h2>
+                <p>Explore in-depth articles, tutorials, and case studies covering power flow analysis, grid stability, protection systems, renewable energy integration, and more.</p>
+            </div>
+
+            <div class="articles-grid">
+                <!-- Article 1 -->
+                <article class="article-card">
+                    <div class="article-img">
+                        <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Power Flow Analysis">
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">Power Systems • June 15, 2023</div>
+                        <h3>Understanding Power Flow Analysis</h3>
+                        <p>A comprehensive guide to power flow studies in electrical grids and their importance in system planning.</p>
+                        <a href="#" class="btn">Read Article</a>
+                    </div>
+                </article>
+
+                <!-- Article 2 -->
+                <article class="article-card">
+                    <div class="article-img">
+                        <img src="https://images.unsplash.com/photo-1508513890950-8bb5a4a35e59?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Grid Protection">
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">Power Systems • May 22, 2023</div>
+                        <h3>Power System Protection Fundamentals</h3>
+                        <p>Understanding relays, circuit breakers, and protection schemes that keep electrical grids safe from faults.</p>
+                        <a href="#" class="btn">Read Article</a>
+                    </div>
+                </article>
+
+                <!-- Article 3 -->
+                <article class="article-card">
+                    <div class="article-img">
+                        <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Renewable Integration">
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">Power Systems • April 5, 2023</div>
+                        <h3>Renewable Energy Integration Challenges</h3>
+                        <p>Technical solutions for incorporating solar and wind power into traditional electrical grids.</p>
+                        <a href="#" class="btn">Read Article</a>
+                    </div>
+                </article>
+
+                <!-- Article 4 -->
+                <article class="article-card">
+                    <div class="article-img">
+                        <img src="https://images.unsplash.com/photo-1624395213043-fa2e123b2656?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Load Flow">
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">Power Systems • March 18, 2023</div>
+                        <h3>Load Flow Analysis Using ETAP</h3>
+                        <p>Step-by-step tutorial for performing load flow studies with industry-standard software.</p>
+                        <a href="#" class="btn">Read Article</a>
+                    </div>
+                </article>
+
+                <!-- Article 5 -->
+                <article class="article-card">
+                    <div class="article-img">
+                        <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Transmission Lines">
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">Power Systems • February 10, 2023</div>
+                        <h3>Transmission Line Parameters and Modeling</h3>
+                        <p>Essential concepts for understanding high-voltage power transmission systems.</p>
+                        <a href="#" class="btn">Read Article</a>
+                    </div>
+                </article>
+
+                <!-- Article 6 -->
+                <article class="article-card">
+                    <div class="article-img">
+                        <img src="https://images.unsplash.com/photo-1497440001375-f5e329ff43f5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Smart Grid">
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">Power Systems • January 5, 2023</div>
+                        <h3>Smart Grid Technologies Explained</h3>
+                        <p>How digital technologies are transforming traditional power systems.</p>
+                        <a href="#" class="btn">Read Article</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="mecindex.html">Home</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Categories</h3>
+                    <ul>
+                        <li><a href="#">Power Systems</a></li>
+                        <li><a href="#">Electronics Basics</a></li>
+                        <li><a href="#">Projects & DIY</a></li>
+                        <li><a href="#">Tools & Software</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Connect</h3>
+                    <ul>
+                        <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
+                        <li><a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+                        <li><a href="#"><i class="fab fa-github"></i> GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Baah Raphael. All rights reserved.</p>
+                <p>Designed with HTML & CSS</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
